@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { AppBar, Drawer, List, ListItem } from 'material-ui';
-import {
-      Link
-    } from 'react-router-dom'
+import { AppBar, Drawer, ListItem } from 'material-ui';
+import { Link } from 'react-router-dom'
 
 export default class NavBar extends Component {
     componentWillMount() {

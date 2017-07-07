@@ -12,13 +12,12 @@ import {
 } from 'react-apollo'
 import App from './App';
 import HomePage from './components/home';
-import NavBar from './components/nav';
 import './index.css';
 injectTapEventPlugin();
 registerServiceWorker();
 
 const networkInterface = createNetworkInterface({
-  uri: 'https://api.graph.cool/simple/v1/cj4s93qw9tyxc017969gq5632'
+  uri: 'https://api.graph.cool/simple/v1/cj4tp8ku9szlu0179gh8b85ep'
 });
 const client = new ApolloClient({networkInterface})
 
