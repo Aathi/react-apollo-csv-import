@@ -6,11 +6,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 import 'react-table/react-table.css'
 import CsvUploader from '../share/csvUploader';
 import SimpleImageUploader from '../share/simpleImageUploader';
+import WebSubCatMultiSelect from '../share/webSubCatMultiSelect';
+
+import img from '../share/image.png';
+
 
 const columns = [{
     Header: 'Thumbnail',
     accessor: 'Thumbnail',
-    Cell: props => (<img src={props.row._original.url} alt="" style={{width: 40, height: 40}}/>)
+    Cell: props => (<img src={props.original.url === null ? img : props.original.url} alt="" style={{width: 40, height: 40}}/>)
   },{
     Header: 'Brand',
     accessor: 'brand',
@@ -31,22 +35,19 @@ const columns = [{
     Header: 'Unit Price',
     accessor: 'unitPrice',
   },{
-    Header: 'Created At',
-    accessor: 'createdAt'
-},{
     Header: 'Actions',
     accessor: 'Actions',
     Cell: props => (<SimpleImageUploader {...props}/>)
+},{
+    Header: 'Sub Category',
+    accessor: 'SubCategory',
+    Cell: props => (<WebSubCatMultiSelect {...props}/>)
 }]
-
-const editRow = (value) => {
-  console.log('editRow=>', value)
-}
 
 const ProductList = (props) => {
   const { data: { allProducts, loading } } = props;
    if (loading) {
-     return <div>Loading</div>;
+     return <center>Loading...</center>;
    } else {
      return (
        <div className="App">
@@ -61,7 +62,6 @@ const ProductList = (props) => {
 
 class Products extends Component {
     render() {
-      console.log('URL', this.props)
         return (
             <div className="App">
                 <CsvUploader/>
@@ -87,6 +87,7 @@ const FeedQuery = gql`query allProducts {
     reference
     url
     createdAt
+    updatedAt
   }
 }`
 
